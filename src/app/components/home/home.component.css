@@ -1,0 +1,29 @@
+
+img{
+    height: 700px;
+    margin-left: 480px;
+}
+h2{
+    margin-top: -350px;
+    margin-left: 5px;
+    font-size: 42px;
+    color: rgb(108,173,227);
+    text-shadow: -1px -1px 0 rgb(16, 22, 49);
+}
+button{
+    background-color: rgb(33,105,162);
+    border-radius: 3px;
+    align-items: center;
+    margin-left: 10px;
+    border-color:rgb(108,173,227);
+    color: white;
+}
+.buttons{
+    
+    margin-left: 170px;
+}
+button:hover{
+    background-color: rgb(108,173,227);
+    border-color:rgb(33,105,162);
+    color: rgb(0, 0, 0);
+}
