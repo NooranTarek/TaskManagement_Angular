@@ -12,6 +12,13 @@ h2{
     color: rgb(108,173,227);
     text-shadow: -1px -1px 0 rgb(16, 22, 49);
 }
+p{
+    font-size: 13px;
+    margin-left: 70px;
+    color:  rgb(16, 22, 49);
+    text-shadow: -1px -1px 0 rgb(108,173,227);
+
+}
 button{
     background-color: rgb(33,105,162);
     border-radius: 3px;
