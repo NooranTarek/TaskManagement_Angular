@@ -1,1 +1,98 @@
-<p>sign-up works!</p>
+<div class="before"></div>
+<div class="container py-3">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-lg-8 col-xl-6">
+      <div class="card rounded-3">
+        <img src="https://ps.w.org/custom-registration-form-builder-with-submission-manager/assets/banner-1544x500.jpg?rev=2585394"
+             class="w-100" alt="img">
+        
+        <div class="form-container">
+          <form id="registrationForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" formControlName="firstName" >
+            </div>
+            @if(signupForm.controls['firstName'].invalid&&signupForm.controls['firstName'].touched)
+            {
+            <div class="form-text text-danger">
+              @if(signupForm.controls['firstName'].errors?.['required']){
+              <small> firstName is required</small>
+              }
+              @if(signupForm.controls['firstName'].errors?.['pattern']){
+              <small> firstName should be letters and without space </small>
+              }
+            </div>
+            }
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" formControlName="lastName">
+            </div>
+            @if(signupForm.controls['lastName'].invalid&&signupForm.controls['lastName'].touched)
+            {
+            <div class="form-text text-danger">
+              @if(signupForm.controls['lastName'].errors?.['required']){
+              <small> lastName is required</small>
+              }
+              @if(signupForm.controls['lastName'].errors?.['pattern']){
+              <small> lastName should be letters and without space </small>
+              }
+            </div>
+            }
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" placeholder="Enter Username" formControlName="username">
+            </div>
+            @if(signupForm.controls['username'].invalid&&signupForm.controls['username'].touched)
+            {
+            <div class="form-text text-danger">
+              @if(signupForm.controls['username'].errors?.['required']){
+              <small> username is required</small>
+              }
+              @if(signupForm.controls['username'].errors?.['pattern']){
+              <small> username should be letters and without space </small>
+              }
+            </div>
+            }
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter Email" formControlName="email">
+            </div>
+            @if(signupForm.controls['email'].invalid&&signupForm.controls['email'].touched)
+            {
+            <div class="form-text text-danger">
+              @if(signupForm.controls['email'].errors?.['required']){
+              <small> email is required</small>
+              }
+              @if(signupForm.controls['email'].errors?.['pattern']){
+              <small> email should be letters and without space </small>
+              }
+            </div>
+            }
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter Password" formControlName="password">
+            </div>
+            @if(signupForm.controls['password'].invalid&&signupForm.controls['password'].touched)
+            {
+            <div class="form-text text-danger">
+              @if(signupForm.controls['password'].errors?.['required']){
+              <small> password is required</small>
+              }
+              @if(signupForm.controls['password'].errors?.['pattern']){
+              <small> password should match pattern </small>
+              }
+            </div>
+            }
+            <div class="form-group">
+                <label for="role">Role</label>
+                <input type="text" id="role" name="role" placeholder="Enter role" formControlName="role" >
+              </div>                           
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
