@@ -12,4 +12,7 @@ export class AuthService {
   userSignup(data:any):Observable<any>{
     return this.http.post(`${this.apiUrl}/register`,data);
   }
+  userSignin(data:any):Observable<any>{
+    return this.http.post(`${this.apiUrl}/login`,data);
+  }
 }

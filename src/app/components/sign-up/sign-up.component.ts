@@ -24,7 +24,7 @@ constructor
    username:new FormControl('',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z]+$')]),
    email:new FormControl('',[Validators.required,Validators.email]),
    password:new FormControl('',[Validators.required,Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]),
-   role: new FormControl({ value: 'user', disabled: true })
+   role: new FormControl('user')
   })
 }
 
