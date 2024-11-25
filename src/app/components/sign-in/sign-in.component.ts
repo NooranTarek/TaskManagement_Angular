@@ -29,8 +29,9 @@ export class SignInComponent {
     const formData=this.signinForm.value;
     this.authService.userSignin(formData).subscribe({
       next:(response:any)=>{
-        console.log(response);
+        console.log(response.data);
         if (response){
+          localStorage.setItem('token', response.data);
           this.toastr.success("user logged in successfully");
           this.route.navigate(['/tasks']);
         }
