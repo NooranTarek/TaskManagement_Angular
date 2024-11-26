@@ -6,9 +6,9 @@ img{
     clip-path: inset(150px 40px 110px 30px);
 }
 h2{
-    margin-top: -350px;
-    margin-left: 5px;
-    font-size: 42px;
+    margin-top: -400px;
+    margin-left: 80px;
+    font-size: 80px;
     color: rgb(108,173,227);
     text-shadow: -1px -1px 0 rgb(16, 22, 49);
 }
@@ -41,3 +41,12 @@ button:hover{
     width: 100%;
     height: 130px;
 }
+.colored-word span:nth-child(1) { color: rgb(254,229,134); }
+.colored-word span:nth-child(2) { color: rgb(251,129,189); }
+.colored-word span:nth-child(3) { color: rgb(183,225,241); }
+.colored-word span:nth-child(4) { color: rgb(255,198,131); }
+.colored-word span:nth-child(5) { color: rgb(254,229,134); }
+.colored-word span:nth-child(6) { color: rgb(251,129,189); }
+.colored-word span:nth-child(7) { color: rgb(183,225,241); }
+.colored-word span:nth-child(8) { color: rgb(255,198,131); }
+.colored-word span:nth-child(9) { color: rgb(192,218,229); }

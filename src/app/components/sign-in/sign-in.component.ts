@@ -38,6 +38,7 @@ export class SignInComponent {
       },
       error:(error: HttpErrorResponse
       ) => {
+        console.log(error)
         this.toastr.error(error.error.message);
         // console.clear();
       }
