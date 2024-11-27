@@ -1,10 +1,9 @@
 .container {
-    background-color: rgb(108, 173, 227); 
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
     border-radius: 0.5rem; 
     margin-top: 20px;
-    height: 400px;
+
 
   }
   
@@ -22,4 +21,18 @@
 #link:hover{
   color: rgb(61, 166, 252);
   cursor: pointer;
+}
+:host {
+  display: block;
+  width: 100vw; 
+  height: 100vh;
+  background-image: url("https://img.freepik.com/premium-vector/hand-painted-watercolor-sticky-note-set_79603-1677.jpg?w=360");
+
+}
+#btns{
+    display:flex;
+}
+.btn{
+    margin-right: 5px;
+    margin-bottom: 20px;
 }

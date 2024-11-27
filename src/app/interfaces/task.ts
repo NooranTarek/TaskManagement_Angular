@@ -4,7 +4,7 @@ export interface Task {
     description: string;
     dueDate: string;
     status: Status;
-    periority: Priority;
+    periority: Periority;
   }
   
   export enum Status {
@@ -13,7 +13,7 @@ export interface Task {
     COMPLETED = 'completed'
   }
   
-  export enum Priority {
+  export enum Periority {
     LOW = 'low',
     MEDIUM = 'medium',
     HIGH = 'high'

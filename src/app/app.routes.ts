@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { TasksComponent } from './components/tasks/tasks.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { UserTasksComponent } from './components/user-tasks/user-tasks.component';
 
 export const routes: Routes = [
     {
@@ -11,8 +12,8 @@ export const routes: Routes = [
     }
     ,
     {
-        path:"tasks",
-        component:TasksComponent
+        path:"user-tasks",
+        component:UserTasksComponent
     },
     {
         path:"register",
@@ -21,5 +22,9 @@ export const routes: Routes = [
     {
         path:"login",
         component:SignInComponent
+    },
+    {
+        path:"add-task",
+        component:AddTaskComponent
     }
 ];

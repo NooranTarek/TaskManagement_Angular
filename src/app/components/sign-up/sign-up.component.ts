@@ -33,7 +33,7 @@ if (this.signupForm.valid){
   const formData=this.signupForm.value;
   this.authService.userSignup(formData).subscribe({
     next:(response:any)=>{
-      console.log(response);
+      // console.log(response);
       if (response){
         this.signupForm.get('role')?.setValue('user');
         this.toastr.success("user registered successfully");
