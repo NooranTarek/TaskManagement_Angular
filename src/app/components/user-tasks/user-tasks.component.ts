@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class UserTasksComponent {
   tasks:Task []=[];
 
-  constructor(private taskService:TaskService ,private toastr: ToastrService ){}
+  constructor(private taskService:TaskService ,private toastr: ToastrService ,private route :Router){}
   ngOnInit(): void {
     this.loadTasks(); 
   }
@@ -31,5 +31,10 @@ export class UserTasksComponent {
         // console.log(error);
       }
     );
+  }
+
+  logout() {
+    localStorage.removeItem('Authorization');
+    this.route.navigate(['/login']);
   }
 }

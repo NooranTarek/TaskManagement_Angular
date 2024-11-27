@@ -52,5 +52,9 @@ if (this.add_task_form.valid){
   })
 }
 }
+logout() {
+  localStorage.removeItem('Authorization');
+  this.route.navigate(['/login']);
+}
   }
 
