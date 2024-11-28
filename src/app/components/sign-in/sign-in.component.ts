@@ -2,12 +2,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
           // console.log(response);
           localStorage.setItem('Authorization', response.data);
           this.toastr.success("user logged in successfully");
-          this.route.navigate(['/add-task']);
+          this.route.navigate(['/user-tasks']);
         }
       },
       error:(error: any

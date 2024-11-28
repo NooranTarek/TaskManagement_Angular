@@ -16,4 +16,7 @@ export class TaskService {
 createTask(data:any): Observable<Task[]> {
     return this.http.post<Task[]>(`${this.urlApi}`,data);
   }
+  deleteTask(id:any):Observable<any>{
+    return this.http.delete<any>(`${this.urlApi}/${id}`)
+  }
 }

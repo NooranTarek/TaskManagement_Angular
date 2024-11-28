@@ -21,7 +21,7 @@ export class UserTasksComponent {
   loadTasks(): void {
     this.taskService.getAllUserTasks().subscribe(
       (response: any) => {
-        // console.log(response);
+        console.log("tasks",response);
         this.tasks = response.data;
         this.toastr.success("your tasks showed successfully");
 
@@ -36,5 +36,23 @@ export class UserTasksComponent {
   logout() {
     localStorage.removeItem('Authorization');
     this.route.navigate(['/login']);
+  }
+
+  deleteSpesificTask(id:any){
+    this.taskService.deleteTask(id).subscribe(
+      (response:any)=>{
+        console.log(id);
+        
+        console.log(response);
+        
+        this.toastr.success(response.message)
+        this.loadTasks();
+      },
+      (error)=>{
+        console.log(error);
+        
+        this.toastr.error(error.error.message);
+      }
+    )
   }
 }

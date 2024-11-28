@@ -39,8 +39,7 @@ if (this.add_task_form.valid){
     next:(response:any)=>{
       // console.log(response);
       if (response){
-        this.add_task_form.get('role')?.setValue('user');
-        this.toastr.success("user registered successfully");
+        this.toastr.success("task added successfully");
         this.route.navigate(['/user-tasks']);
       }
     },
