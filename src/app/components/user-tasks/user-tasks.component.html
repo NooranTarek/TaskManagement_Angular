@@ -2,27 +2,7 @@
 
 
 <div class="d-flex">
-  <!-- Sidebar -->
-  <nav class="bg-light p-3" style="width: 250px; min-height: 100vh; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);">
-    <h5 class="text-center">Navigation</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link " id="link" routerLink="/user-tasks">
-          <i class="fa-solid fa-list"></i> Tasks
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="link" routerLink="/add-task">
-          <i class="fa-solid fa-plus"></i> Add New Task
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " id="link" (click)="logout()">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
-        </a>
-      </li>
-    </ul>
-  </nav>
+<app-side-bar></app-side-bar>
 
 <div class="container">
       <div class="row justify-content-center">
@@ -37,6 +17,7 @@
                       <th class="col">description</th>
                       <th class="col">status</th>
                       <th class="col">priority</th>
+                      <th class="col">dueDate</th>
                       <th class="col">edit/delete</th>
                     </tr>
                   </thead>
@@ -47,8 +28,9 @@
                           <td>{{task.description}}</td>
                           <td>{{task.status}}</td>
                           <td>{{task.periority}}</td>
+                          <td id="date">{{task.dueDate}}</td>
                           <td id="btns">
-                            <button type="button" class="btn btn-primary btn-sm px-3">
+                            <button type="button" class="btn btn-primary btn-sm px-3" [routerLink]="['update-task',task.id]">
                               <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                             <button type="button" class="btn btn-danger btn-sm px-3" (click)="deleteSpesificTask(task.id)">

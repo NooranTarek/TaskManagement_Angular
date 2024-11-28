@@ -6,10 +6,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgFor } from '@angular/common';
+import { SideBarComponent } from '../side-bar/side-bar.component';
 
 @Component({
   selector: 'app-add-task',
-  imports: [RouterLink,ReactiveFormsModule,NgFor],
+  imports: [ReactiveFormsModule,SideBarComponent],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css'
 })
@@ -51,9 +52,6 @@ if (this.add_task_form.valid){
   })
 }
 }
-logout() {
-  localStorage.removeItem('Authorization');
-  this.route.navigate(['/login']);
-}
+
   }
 

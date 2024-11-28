@@ -19,4 +19,10 @@ createTask(data:any): Observable<Task[]> {
   deleteTask(id:any):Observable<any>{
     return this.http.delete<any>(`${this.urlApi}/${id}`)
   }
+  updateTask(id:any,data:any):Observable<any>{
+    return this.http.put<any>(`${this.urlApi}/${id}`,data)
+  }
+  findTaskById(id:any):Observable<Task>{
+    return this.http.get<Task>(`${this.urlApi}/${id}`);
+  }
 }

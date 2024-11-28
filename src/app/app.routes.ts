@@ -4,6 +4,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { UserTasksComponent } from './components/user-tasks/user-tasks.component';
+import { UpdateTaskComponent } from './components/update-task/update-task.component';
 
 export const routes: Routes = [
     {
@@ -26,5 +27,9 @@ export const routes: Routes = [
     {
         path:"add-task",
         component:AddTaskComponent
+    },
+    {
+        path:"user-tasks/update-task/:id",
+        component:UpdateTaskComponent
     }
 ];

@@ -3,10 +3,11 @@ import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SideBarComponent } from '../side-bar/side-bar.component';
 
 @Component({
   selector: 'app-user-tasks',
-  imports: [RouterLink],
+  imports: [SideBarComponent,RouterLink],
   templateUrl: './user-tasks.component.html',
   styleUrl: './user-tasks.component.css'
 })
@@ -33,26 +34,26 @@ export class UserTasksComponent {
     );
   }
 
-  logout() {
-    localStorage.removeItem('Authorization');
-    this.route.navigate(['/login']);
-  }
 
   deleteSpesificTask(id:any){
     this.taskService.deleteTask(id).subscribe(
-      (response:any)=>{
-        console.log(id);
-        
-        console.log(response);
-        
-        this.toastr.success(response.message)
-        this.loadTasks();
-      },
-      (error)=>{
-        console.log(error);
-        
-        this.toastr.error(error.error.message);
+      {
+        next:(response:any)=>{
+          console.log(id);
+          
+          console.log(response);
+          
+          this.toastr.success(response.message)
+          this.loadTasks();
+        },
+        error: 
+        (error)=>{
+          console.log(error);
+          
+          this.toastr.error(error.error.message);
+        }
       }
+     
     )
   }
 }

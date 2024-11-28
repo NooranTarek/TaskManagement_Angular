@@ -2,27 +2,7 @@
 
 
 <div class="d-flex">
-  <!-- Sidebar -->
-  <nav class="bg-light p-3" style="width: 250px; min-height: 100vh; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);">
-    <h5 class="text-center">Navigation</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link " id="link" routerLink="/user-tasks">
-          <i class="fa-solid fa-list"></i> Tasks
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="link" routerLink="/add-task">
-          <i class="fa-solid fa-plus"></i> Add New Task
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " id="link" (click)="logout()">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
-        </a>
-      </li>
-    </ul>
-  </nav>
+<app-side-bar></app-side-bar>
 
 
   <div class="container py-3">
@@ -65,8 +45,11 @@
               <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" name="status" formControlName="status" class="form-control">
-                  <option *ngFor="let status of statusOptions" [value]="status">{{ status}}</option>
-                </select>              </div>
+                  @for (status of statusOptions; track $index) {
+                    <option [value]="status">{{ status}}</option>
+                  }
+                </select>              
+              </div>
               @if(add_task_form.controls['status'].invalid&&add_task_form.controls['status'].touched)
               {
               <div class="form-text text-danger">
@@ -81,7 +64,9 @@
               <div class="form-group">
                 <label for="periority">Periority</label>
                 <select id="periority" name="periority" formControlName="periority" class="form-control">
-                  <option *ngFor="let priority of periorityOptions" [value]="priority">{{ priority}}</option>
+                  @for (priority of periorityOptions; track $index) {
+                    <option [value]="priority">{{ priority}}</option>
+                  }
                 </select>
               </div>
               @if(add_task_form.controls['periority'].invalid&&add_task_form.controls['periority'].touched)

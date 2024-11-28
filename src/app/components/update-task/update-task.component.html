@@ -1,1 +1,110 @@
-<p>update-task works!</p>
+<div class="before"></div>
+<div class="d-flex">
+  <app-side-bar></app-side-bar>
+  
+  
+    <div class="container py-3">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-8 col-xl-6">
+          <img src="https://png.pngtree.com/png-vector/20220912/ourmid/pngtree-vector-push-pin-paper-png-image_6172879.png">
+          <div class="card rounded-3">
+            <div class="form-container">
+              <form id="registrationForm" (ngSubmit)="updateTaskData()" [formGroup]="taskForm" >
+                @if (taskInfo) {
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter title" formControlName="title"  [value]="taskInfo.title">
+                  </div>
+                  <!-- @if(add_task_form.controls['title'].invalid&&add_task_form.controls['title'].touched)
+                  {
+                  <div class="form-text text-danger">
+                    @if(add_task_form.controls['title'].errors?.['required']){
+                    <small> title is required</small>
+                    }
+                    @if(add_task_form.controls['title'].errors?.['pattern']){
+                    <small> title should be letters and without space </small>
+                    }
+                  </div>
+                  } -->
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" placeholder="Enter Description" formControlName="description"  [value]="taskInfo.description">
+                  </div>
+                  <!-- @if(add_task_form.controls['description'].invalid&&add_task_form.controls['description'].touched)
+                  {
+                  <div class="form-text text-danger">
+                    @if(add_task_form.controls['description'].errors?.['required']){
+                    <small> description is required</small>
+                    }
+                    @if(add_task_form.controls['description'].errors?.['pattern']){
+                    <small> description should be letters and without space </small>
+                    }
+                  </div>
+                  } -->
+                  <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" formControlName="status" class="form-control">
+                      @for (status of statusOptions; track $index) {
+                        <option [value]="taskInfo.status">{{ status}}</option>
+                      }
+                    </select>              
+                  </div>
+                  <!-- @if(add_task_form.controls['status'].invalid&&add_task_form.controls['status'].touched)
+                  {
+                  <div class="form-text text-danger">
+                    @if(add_task_form.controls['status'].errors?.['required']){
+                    <small> status is required</small>
+                    }
+                    @if(add_task_form.controls['status'].errors?.['pattern']){
+                    <small> status should be letters and without space </small>
+                    }
+                  </div>
+                  } -->
+                  <div class="form-group">
+                    <label for="periority">Periority</label>
+                    <select id="periority" name="periority" formControlName="periority" class="form-control"  [value]="taskInfo.periority">
+                      @for (priority of periorityOptions; track $index) {
+                        <option [value]="taskInfo.periority">{{ priority}}</option>
+
+                      }
+                    </select>
+                  </div>
+                  <!-- @if(add_task_form.controls['periority'].invalid&&add_task_form.controls['periority'].touched)
+                  {
+                  <div class="form-text text-danger">
+                    @if(add_task_form.controls['periority'].errors?.['required']){
+                    <small> periority is required</small>
+                    }
+                    @if(add_task_form.controls['periority'].errors?.['pattern']){
+                    <small> periority should be letters and without space </small>
+                    }
+                  </div>
+                  } -->
+                  <div class="form-group">
+                    <label for="dueDate">dueDate</label>
+                    <input type="date" id="dueDate" name="dueDate" placeholder="Enter dueDate" formControlName="dueDate"  [value]="taskInfo.dueDate">
+                  </div>
+                  <!-- @if(add_task_form.controls['dueDate'].invalid&&add_task_form.controls['dueDate'].touched)
+                  {
+                  <div class="form-text text-danger">
+                    @if(add_task_form.controls['dueDate'].errors?.['required']){
+                    <small> dueDate is required</small>
+                    }
+                  </div>
+                  }                           -->
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                }
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+  
+  </div>
+  
