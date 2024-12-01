@@ -1,19 +1,13 @@
-<div class="before"></div>
-<div class="d-flex">
-  <app-side-bar></app-side-bar>
   
-  
-    <div class="container py-3">
-      <div class="row d-flex justify-content-center align-items-center">
         <div class="col-lg-8 col-xl-6">
-          <img src="https://png.pngtree.com/png-vector/20220912/ourmid/pngtree-vector-push-pin-paper-png-image_6172879.png">
           <div class="card rounded-3">
             <div class="form-container">
               <form id="registrationForm" (ngSubmit)="updateTaskData()" [formGroup]="taskForm" >
-                @if (taskInfo) {
+                @if (data) {
+                  <h1>{{data.task.title}}</h1>
                   <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title" placeholder="Enter title" formControlName="title"  [value]="taskInfo.title">
+                    <input type="text" id="title" name="title" placeholder="Enter title" formControlName="title"  >
                   </div>
                   <!-- @if(add_task_form.controls['title'].invalid&&add_task_form.controls['title'].touched)
                   {
@@ -28,7 +22,7 @@
                   } -->
                   <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" id="description" name="description" placeholder="Enter Description" formControlName="description"  [value]="taskInfo.description">
+                    <input type="text" id="description" name="description" placeholder="Enter Description" formControlName="description" >
                   </div>
                   <!-- @if(add_task_form.controls['description'].invalid&&add_task_form.controls['description'].touched)
                   {
@@ -45,7 +39,7 @@
                     <label for="status">Status</label>
                     <select id="status" name="status" formControlName="status" class="form-control">
                       @for (status of statusOptions; track $index) {
-                        <option [value]="taskInfo.status">{{ status}}</option>
+                        <option >{{ status}}</option>
                       }
                     </select>              
                   </div>
@@ -62,9 +56,9 @@
                   } -->
                   <div class="form-group">
                     <label for="periority">Periority</label>
-                    <select id="periority" name="periority" formControlName="periority" class="form-control"  [value]="taskInfo.periority">
+                    <select id="periority" name="periority" formControlName="periority" class="form-control" >
                       @for (priority of periorityOptions; track $index) {
-                        <option [value]="taskInfo.periority">{{ priority}}</option>
+                        <option >{{ priority}}</option>
 
                       }
                     </select>
@@ -82,7 +76,7 @@
                   } -->
                   <div class="form-group">
                     <label for="dueDate">dueDate</label>
-                    <input type="date" id="dueDate" name="dueDate" placeholder="Enter dueDate" formControlName="dueDate"  [value]="taskInfo.dueDate">
+                    <input type="date" id="dueDate" name="dueDate" placeholder="Enter dueDate" formControlName="dueDate" >
                   </div>
                   <!-- @if(add_task_form.controls['dueDate'].invalid&&add_task_form.controls['dueDate'].touched)
                   {
@@ -101,10 +95,7 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
     
   
   
-  </div>
-  
+ 

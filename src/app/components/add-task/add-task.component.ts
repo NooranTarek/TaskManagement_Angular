@@ -45,8 +45,10 @@ if (this.add_task_form.valid){
       }
     },
     error:(error: HttpErrorResponse) => {
-      this.toastr.error(error.error.message);
-      // console.clear();
+      if(error.error.message=="Token EXPIRED"){
+        this.toastr.error(error.error.message);
+        this.route.navigate(['/login']);
+      }      // console.clear();
     }
     
   })
