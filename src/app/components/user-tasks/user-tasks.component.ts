@@ -7,17 +7,21 @@ import { SideBarComponent } from '../side-bar/side-bar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
 import { FilterDataComponent } from '../filter-data/filter-data.component';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-tasks',
-  imports: [SideBarComponent,FilterDataComponent],
+  imports: [SideBarComponent,FilterDataComponent,MatPaginatorModule],
   templateUrl: './user-tasks.component.html',
   styleUrl: './user-tasks.component.css'
 })
 export class UserTasksComponent {
   tasks: Task[] = [];
   allTasks: Task[] = [];
-
+  pageNumber:number=0;
+  pageSize:number=3;
+  allPages!:number;
+  currentPage:number=0;
   constructor(private taskService: TaskService, private toastr: ToastrService
     , private route: Router, private router: ActivatedRoute,
     private dialog: MatDialog) { }
@@ -37,10 +41,12 @@ export class UserTasksComponent {
     });
   }
   loadTasks(): void {
-    this.taskService.getAllUserTasks().subscribe(
+    this.taskService.getAllUserTasks(this.pageNumber,this.pageSize).subscribe(
       (response: any) => {
         console.log("tasks", response);
-        this.allTasks = response.data;
+        this.allTasks = response.data.content;
+        // this.allPages=response.data.totalPages;        
+        this.allPages=response.data.totalElements;        
         this.tasks=[...this.allTasks];
         this.toastr.success("your tasks showed successfully");
 
@@ -82,5 +88,13 @@ export class UserTasksComponent {
     console.log("filtered data",this.tasks);
 
   }
-
+  // onPageChange(newPage:number){
+  //   this.pageNumber=newPage;
+  //   this.loadTasks();
+  // }
+  pageChanged(event: PageEvent) {
+    this.pageNumber = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadTasks();
+  }
 }

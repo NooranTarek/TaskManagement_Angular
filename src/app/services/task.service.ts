@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../interfaces/task';
@@ -10,9 +10,14 @@ export class TaskService {
 
   constructor(private http:HttpClient) { }
   private urlApi = 'http://localhost:8080/tasks';
-  getAllUserTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(`${this.urlApi}/userTasks`);
+  getAllUserTasks(page: number, size: number): Observable<Task[]> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+  
+    return this.http.get<Task[]>(`${this.urlApi}/userTasks`, { params });
   }
+  
 createTask(data:any): Observable<Task[]> {
     return this.http.post<Task[]>(`${this.urlApi}`,data);
   }
