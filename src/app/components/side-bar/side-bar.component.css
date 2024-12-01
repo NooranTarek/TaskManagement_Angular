@@ -5,3 +5,10 @@
     color: rgb(61, 166, 252);
     cursor: pointer;
   }
+  h2{
+    color:#6cade3;;
+  }
+  #icon{
+    font-size: 50px;
+    margin-left: 90px;
+  }
