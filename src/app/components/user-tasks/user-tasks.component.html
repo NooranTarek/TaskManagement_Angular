@@ -2,50 +2,53 @@
 
 
 <div class="d-flex">
-<app-side-bar></app-side-bar>
+  <app-side-bar></app-side-bar>
 
-<div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12">
-          <div class="card shadow-2-strong" style="background-color: rgb(254,246,206);">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-borderless mb-0">
-                  <thead>
-                    <tr>
-                      <th class="col">title</th>
-                      <th class="col">description</th>
-                      <th class="col">status</th>
-                      <th class="col">priority</th>
-                      <th class="col">dueDate</th>
-                      <th class="col">edit/delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @for (task of tasks; track $index) {
-                        <tr>
-                          <td>{{task.title}}</td>
-                          <td>{{task.description}}</td>
-                          <td>{{task.status}}</td>
-                          <td>{{task.periority}}</td>
-                          <td id="date">{{task.dueDate}}</td>
-                          <td id="btns">
-                            <button type="button" class="btn btn-primary btn-sm px-3" (click)="openUpdateDialog(task)">
-                              <i class="fa-solid fa-pen-to-square"></i>
-                            </button>                            
-                            <button type="button" class="btn btn-danger btn-sm px-3" (click)="deleteSpesificTask(task.id)" >
-                              <i class="fa-solid fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
+  <div class="container">
 
-                    }
-                  </tbody>
-                </table>
-              </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card shadow-2-strong" style="background-color: rgb(254,246,206);">
+          <app-filter-data [data]="allTasks" [filteredFields]="['periority', 'status']"
+            (filteredData)="updateFilteredItems($event)"></app-filter-data>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-borderless mb-0">
+                <thead>
+                  <tr>
+                    <th class="col">Title</th>
+                    <th class="col">Description</th>
+                    <th class="col">Status</th>
+                    <th class="col">Priority</th>
+                    <th class="col">DueDate</th>
+                    <th class="col">Edit/Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (task of tasks; track $index) {
+                  <tr>
+                    <td>{{task.title}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.status}}</td>
+                    <td>{{task.periority}}</td>
+                    <td id="date">{{task.dueDate}}</td>
+                    <td id="btns">
+                      <button type="button" class="btn btn-primary btn-sm px-3" (click)="openUpdateDialog(task)">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger btn-sm px-3" (click)="deleteSpesificTask(task.id)">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  }
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

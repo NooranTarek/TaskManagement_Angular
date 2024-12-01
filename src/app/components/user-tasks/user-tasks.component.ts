@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SideBarComponent } from '../side-bar/side-bar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
+import { FilterDataComponent } from '../filter-data/filter-data.component';
 
 @Component({
   selector: 'app-user-tasks',
-  imports: [SideBarComponent],
+  imports: [SideBarComponent,FilterDataComponent],
   templateUrl: './user-tasks.component.html',
   styleUrl: './user-tasks.component.css'
 })
 export class UserTasksComponent {
   tasks: Task[] = [];
+  allTasks: Task[] = [];
 
   constructor(private taskService: TaskService, private toastr: ToastrService
     , private route: Router, private router: ActivatedRoute,
@@ -38,7 +40,8 @@ export class UserTasksComponent {
     this.taskService.getAllUserTasks().subscribe(
       (response: any) => {
         console.log("tasks", response);
-        this.tasks = response.data;
+        this.allTasks = response.data;
+        this.tasks=[...this.allTasks];
         this.toastr.success("your tasks showed successfully");
 
       },
@@ -74,6 +77,10 @@ export class UserTasksComponent {
 
     )
   }
+  updateFilteredItems(filtered: any[]) {
+    this.tasks = filtered;
+    console.log("filtered data",this.tasks);
 
+  }
 
 }

@@ -1,0 +1,15 @@
+.filter-container {
+margin-left: 500px;
+margin-top: 10px;
+  }
+
+select{
+    padding: 5px;
+    border-color: rgb(255,208,230);
+    border-width: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+}  
+#filter{
+    font-size: 20px;
+}

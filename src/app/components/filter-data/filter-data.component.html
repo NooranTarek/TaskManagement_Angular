@@ -1,0 +1,18 @@
+<div class="filter-container">
+    <span id="filter">Filter</span>
+    <select [(ngModel)]="selectedField">
+      <option value="">-- Select Field --</option>
+      <option *ngFor="let field of filteredFields" [value]="field">{{ field }}</option>
+    </select>
+    <select [(ngModel)]="filterValue" (change)="applyFilter()">
+        <option value="">-- Select Value --</option>
+        @if(selectedField=="periority"){
+        <option *ngFor="let value of periorityOptions" [value]="value">{{ value }}</option>
+        }
+        @else {
+            <option *ngFor="let value of statusOptions" [value]="value">{{ value }}</option>
+        }
+      </select>
+   
+  </div>
+  
