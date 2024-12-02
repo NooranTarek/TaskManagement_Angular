@@ -21,10 +21,10 @@ export class AllUsersComponent {
   constructor(private userService: UserService, private toastr: ToastrService
     , private route: Router, private router: ActivatedRoute) { }
   ngOnInit(): void {
-    this.loadTasks();
+    this.loadUsers();
   }
 
-  loadTasks(): void {
+  loadUsers(): void {
     this.userService.getAllUsers(this.pageNumber,this.pageSize).subscribe(
       (response: any) => {
         this.users = response.data.content;
@@ -45,6 +45,17 @@ export class AllUsersComponent {
   pageChanged(event: PageEvent) {
     this.pageNumber = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.loadTasks();
+    this.loadUsers();
+  }
+  deleteSpesificUser(id:any){
+    this.userService.deleteUser(id).subscribe({
+      next:(response:any)=>{
+        this.toastr.success("user deleted successfully");
+        this.loadUsers;
+      },
+      error:(error:any)=>{
+        this.toastr.error(error);
+      }
+    })
   }
 }

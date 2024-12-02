@@ -20,4 +20,7 @@ export class UserService {
   
     return this.http.get<User[]>(`${this.urlApi}`, { params });
   }
+  deleteUser(id:any):Observable<any>{
+    return this.http.delete<any>(`${this.urlApi}/${id}`)
+  }
 }
