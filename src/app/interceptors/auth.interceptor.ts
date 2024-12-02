@@ -18,7 +18,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       // console.log('Decoded Token:', decodedToken);
 
       const userRole = decodedToken.role;
+      const username =decodedToken.sub;
       authService.setRole(userRole);
+      authService.setName(username);
       // console.log('User Role:', userRole);
     } catch (error) {
       console.error('Error decoding token:', error);

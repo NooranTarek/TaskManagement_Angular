@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-admin-side-bar',
@@ -12,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminSideBarComponent {
   name:string='';
 
-  constructor(private route:Router,private userService:UserService,private toastr:ToastrService){}
+  constructor(private route:Router,private authService:AuthService,private toastr:ToastrService){}
 
 ngOnInit(): void {
   this.getName();
@@ -23,14 +24,6 @@ ngOnInit(): void {
   }
 
   getName(){
-    this.userService.getUserName().subscribe({
-      next:(response:any)=>{
-        this.name=response.data.userName;
-        
-      },
-    error:(error:any)=>{
-      this.toastr.error(error);
-    }
-    })
+    this.name=this.authService.getName();
   }
 }
