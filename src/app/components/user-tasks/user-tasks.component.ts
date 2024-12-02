@@ -8,14 +8,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
 import { FilterDataComponent } from '../filter-data/filter-data.component';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { UserService } from '../../services/user.service';
+import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.component';
 
 @Component({
   selector: 'app-user-tasks',
-  imports: [SideBarComponent,FilterDataComponent,MatPaginatorModule],
+  imports: [SideBarComponent,FilterDataComponent,MatPaginatorModule,AdminSideBarComponent],
   templateUrl: './user-tasks.component.html',
   styleUrl: './user-tasks.component.css'
 })
 export class UserTasksComponent {
+  isAdmin!:boolean;
+  role:string='';
   tasks: Task[] = [];
   allTasks: Task[] = [];
   pageNumber:number=0;
@@ -24,8 +28,10 @@ export class UserTasksComponent {
   currentPage:number=0;
   constructor(private taskService: TaskService, private toastr: ToastrService
     , private route: Router, private router: ActivatedRoute,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private userService:UserService) { }
   ngOnInit(): void {
+    this.getRole();
     this.loadTasks();
   }
 
@@ -96,5 +102,25 @@ export class UserTasksComponent {
     this.pageNumber = event.pageIndex;
     this.pageSize = event.pageSize;
     this.loadTasks();
+  }
+  getRole(){
+    this.userService.getUserName().subscribe({
+      next:(response:any)=>{
+        this.role=response.data.role;
+        console.log(this.role);
+        
+        if(this.role=="admin"){
+          
+          this.isAdmin=true;
+          console.log(this.isAdmin);
+        }
+        else{
+          this.isAdmin=false;
+        }
+      },
+    error:(error:any)=>{
+      this.toastr.error(error);
+    }
+    })
   }
 }

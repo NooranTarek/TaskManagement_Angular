@@ -2,7 +2,13 @@
 
 
 <div class="d-flex">
-  <app-side-bar></app-side-bar>
+  @if(isAdmin){
+<app-admin-side-bar></app-admin-side-bar>
+  }
+  @else {
+    <app-side-bar></app-side-bar>
+
+  }
 
   <div class="container">
 

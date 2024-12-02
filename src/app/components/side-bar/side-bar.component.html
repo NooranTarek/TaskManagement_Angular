@@ -1,21 +1,22 @@
-<nav class="bg-light p-3" style="width: 250px; min-height: 100vh; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);">
-  <i id="icon"  class="fa-solid fa-user" style="color: rgb(85,88,90);"></i>
-    <h2 class="text-center">Hello {{name}}</h2>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link " id="link" routerLink="/user-tasks">
-          <i class="fa-solid fa-list"></i> Tasks
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="link" routerLink="/add-task">
-          <i class="fa-solid fa-plus"></i> Add New Task
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " id="link" (click)="logout()">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
-        </a>
-      </li>
-    </ul>
-  </nav>
+
+  <nav class="bg-light p-3" style="width: 250px; min-height: 100vh; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);">
+    <i id="icon"  class="fa-solid fa-user" style="color: rgb(85,88,90);"></i>
+      <h2 class="text-center">Hello {{name}}</h2>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link " id="link" routerLink="/user-tasks">
+            <i class="fa-solid fa-list"></i> Tasks
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="link" routerLink="/add-task">
+            <i class="fa-solid fa-plus"></i> Add New Task
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " id="link" (click)="logout()">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>

@@ -25,7 +25,7 @@ ngOnInit(): void {
   getName(){
     this.userService.getUserName().subscribe({
       next:(response:any)=>{
-        this.name=response.data;
+        this.name=response.data.userName;
         
       },
     error:(error:any)=>{

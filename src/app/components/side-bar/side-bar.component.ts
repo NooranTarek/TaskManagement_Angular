@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SideBarComponent implements OnInit {
   name:string='';
-
+  role:string='';
   constructor(private route:Router,private userService:UserService,private toastr:ToastrService){}
 
 ngOnInit(): void {
@@ -25,8 +25,7 @@ ngOnInit(): void {
   getName(){
     this.userService.getUserName().subscribe({
       next:(response:any)=>{
-        this.name=response.data;
-        
+        this.name=response.data.userName;
       },
     error:(error:any)=>{
       this.toastr.error(error);
