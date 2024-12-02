@@ -17,7 +17,13 @@ export class TaskService {
   
     return this.http.get<Task[]>(`${this.urlApi}/userTasks`, { params });
   }
+  getAllTasks(page: number, size: number): Observable<Task[]> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
   
+    return this.http.get<Task[]>(`${this.urlApi}`, { params });
+  }
 createTask(data:any): Observable<Task[]> {
     return this.http.post<Task[]>(`${this.urlApi}`,data);
   }

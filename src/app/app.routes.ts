@@ -7,6 +7,7 @@ import { UserTasksComponent } from './components/user-tasks/user-tasks.component
 import { UpdateTaskComponent } from './components/update-task/update-task.component';
 import { AdminSideBarComponent } from './components/admin-side-bar/admin-side-bar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
 
 export const routes: Routes = [
     {
@@ -32,7 +33,7 @@ export const routes: Routes = [
     },
     {
         path:"admin",
-        component:AdminSideBarComponent
+        component:AllTasksComponent
     },
     {
         path:"**",

@@ -5,6 +5,9 @@ export interface Task {
     dueDate: string;
     status: Status;
     periority: Periority;
+    user_id: number;
+    userName: string;
+
   }
   
   export enum Status {
