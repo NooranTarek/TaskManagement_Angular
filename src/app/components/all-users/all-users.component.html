@@ -1,0 +1,53 @@
+<div class="before"></div>
+
+
+<div class="d-flex">
+<app-admin-side-bar></app-admin-side-bar>
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card shadow-2-strong" style="background-color: rgb(254,246,206);">
+          <!-- <app-filter-data [data]="allTasks" [filteredFields]="['periority', 'status']"
+            (filteredData)="updateFilteredItems($event)"></app-filter-data> -->
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-borderless mb-0">
+                <thead>
+                  <tr>
+                      <th class="col">Id</th>
+                    <th class="col">First Name</th>
+                    <th class="col">Last Name</th>
+                    <th class="col">UserName</th>
+                    <th class="col">Role</th>
+                    <th class="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (user of users; track $index) {
+                  <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.email}}</td>
+
+                  </tr>
+
+                  }
+                </tbody>
+              </table>
+              
+            </div>
+            
+          </div>
+        </div>
+        <div class="paginator-container">
+          <mat-paginator [length]="allPages" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)"></mat-paginator>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

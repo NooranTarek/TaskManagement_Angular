@@ -8,6 +8,7 @@ import { UpdateTaskComponent } from './components/update-task/update-task.compon
 import { AdminSideBarComponent } from './components/admin-side-bar/admin-side-bar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
+import { AllUsersComponent } from './components/all-users/all-users.component';
 
 export const routes: Routes = [
     {
@@ -32,8 +33,12 @@ export const routes: Routes = [
         component:AddTaskComponent
     },
     {
-        path:"admin",
+        path:"all-tasks",
         component:AllTasksComponent
+    },
+    {
+        path:"all-users",
+        component:AllUsersComponent
     },
     {
         path:"**",
