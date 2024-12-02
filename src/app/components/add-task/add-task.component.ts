@@ -7,14 +7,18 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 import { SideBarComponent } from '../side-bar/side-bar.component';
+import { AuthService } from '../../services/auth.service';
+import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.component';
 
 @Component({
   selector: 'app-add-task',
-  imports: [ReactiveFormsModule,SideBarComponent],
+  imports: [ReactiveFormsModule,SideBarComponent,AdminSideBarComponent],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css'
 })
 export class AddTaskComponent {
+  isAdmin!:boolean;
+  role:string='';
   task:Task []=[];
   add_task_form!:FormGroup;
   periorityOptions = Object.values(Periority);
@@ -23,7 +27,8 @@ export class AddTaskComponent {
   constructor
   (private taskService:TaskService,
   private route:Router,
-  private toastr: ToastrService){
+  private toastr: ToastrService,
+  private authService:AuthService){
   this.add_task_form=new FormGroup({
    title:new FormControl(null,[Validators.required,Validators.minLength(3)]),
    description:new FormControl(null,[Validators.required,Validators.minLength(3)]),
@@ -54,6 +59,16 @@ if (this.add_task_form.valid){
   })
 }
 }
-
+getRole(){
+  this.role=this.authService.getRole();
+  console.log("role",this.role);
+  if(this.role=="admin"){
+        
+    this.isAdmin=true;
+  }
+  else{
+    this.isAdmin=false;
+  }
+}
   }
 

@@ -10,6 +10,7 @@ import { FilterDataComponent } from '../filter-data/filter-data.component';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { UserService } from '../../services/user.service';
 import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-tasks',
@@ -29,7 +30,7 @@ export class UserTasksComponent {
   constructor(private taskService: TaskService, private toastr: ToastrService
     , private route: Router, private router: ActivatedRoute,
     private dialog: MatDialog,
-    private userService:UserService) { }
+    private authService:AuthService) { }
   ngOnInit(): void {
     this.getRole();
     this.loadTasks();
@@ -104,23 +105,14 @@ export class UserTasksComponent {
     this.loadTasks();
   }
   getRole(){
-    this.userService.getUserName().subscribe({
-      next:(response:any)=>{
-        this.role=response.data.role;
-        console.log(this.role);
-        
-        if(this.role=="admin"){
+    this.role=this.authService.getRole();
+    console.log("role",this.role);
+    if(this.role=="admin"){
           
-          this.isAdmin=true;
-          console.log(this.isAdmin);
-        }
-        else{
-          this.isAdmin=false;
-        }
-      },
-    error:(error:any)=>{
-      this.toastr.error(error);
+      this.isAdmin=true;
     }
-    })
-  }
+    else{
+      this.isAdmin=false;
+    }
+}
 }

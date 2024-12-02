@@ -3,18 +3,22 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import {jwtDecode} from 'jwt-decode';
+import { AuthService } from '../services/auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token =localStorage.getItem('Authorization');
   console.log("from interceptor",token);
   
   const router = inject(Router); 
+  const authService = inject(AuthService);
+
   if (token) {
     try {
       const decodedToken: any = jwtDecode(token);
       // console.log('Decoded Token:', decodedToken);
 
       const userRole = decodedToken.role;
+      authService.setRole(userRole);
       // console.log('User Role:', userRole);
     } catch (error) {
       console.error('Error decoding token:', error);

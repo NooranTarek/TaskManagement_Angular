@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../interfaces/user';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-all-users',
@@ -13,13 +14,16 @@ import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.componen
   styleUrl: './all-users.component.css'
 })
 export class AllUsersComponent {
+  isAdmin!:boolean;
+  role:string='';
   users: User[] = [];
   pageNumber:number=0;
   pageSize:number=3;
   allPages!:number;
   currentPage:number=0;
   constructor(private userService: UserService, private toastr: ToastrService
-    , private route: Router, private router: ActivatedRoute) { }
+    , private route: Router, private router: ActivatedRoute
+  ) { }
   ngOnInit(): void {
     this.loadUsers();
   }
@@ -58,4 +62,5 @@ export class AllUsersComponent {
       }
     })
   }
+
 }
