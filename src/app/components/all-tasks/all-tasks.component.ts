@@ -5,10 +5,11 @@ import { TaskService } from '../../services/task.service';
 import { ToastrService } from 'ngx-toastr';
 import { Task } from '../../interfaces/task';
 import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.component';
+import { FilterDataComponent } from '../filter-data/filter-data.component';
 
 @Component({
   selector: 'app-all-tasks',
-  imports: [MatPaginatorModule,AdminSideBarComponent],
+  imports: [MatPaginatorModule,AdminSideBarComponent,FilterDataComponent],
   templateUrl: './all-tasks.component.html',
   styleUrl: './all-tasks.component.css'
 })
@@ -44,6 +45,9 @@ export class AllTasksComponent {
     }
      
     );
+  }
+  updateFilteredItems(Filtered:any[]){
+    this.tasks=Filtered;
   }
   pageChanged(event: PageEvent) {
     this.pageNumber = event.pageIndex;

@@ -9,8 +9,11 @@
         @if(selectedField=="periority"){
         <option *ngFor="let value of periorityOptions" [value]="value">{{ value }}</option>
         }
-        @else {
+        @else if(selectedField=="status") {
             <option *ngFor="let value of statusOptions" [value]="value">{{ value }}</option>
+        }
+        @else {
+          <option *ngFor="let value of roleOptions" [value]="value">{{ value }}</option>
         }
       </select>
    

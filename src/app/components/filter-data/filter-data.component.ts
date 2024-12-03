@@ -2,6 +2,7 @@ import { NgFor } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Periority, Status } from '../../interfaces/task';
+import { Role } from '../../interfaces/user';
 
 @Component({
   selector: 'app-filter-data',
@@ -15,6 +16,7 @@ export class FilterDataComponent {
   @Output() filteredData= new EventEmitter<any[]>();;
   periorityOptions = Object.values(Periority);
   statusOptions = Object.values(Status);
+  roleOptions=Object.values(Role);
   filterValue:string='';
   selectedField: string = '';
   applyFilter(){

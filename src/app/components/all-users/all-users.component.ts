@@ -6,10 +6,11 @@ import { User } from '../../interfaces/user';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.component';
 import { AuthService } from '../../services/auth.service';
+import { FilterDataComponent } from '../filter-data/filter-data.component';
 
 @Component({
   selector: 'app-all-users',
-  imports: [AdminSideBarComponent,MatPaginator],
+  imports: [AdminSideBarComponent,MatPaginator,FilterDataComponent],
   templateUrl: './all-users.component.html',
   styleUrl: './all-users.component.css'
 })
@@ -17,6 +18,7 @@ export class AllUsersComponent {
   isAdmin!:boolean;
   role:string='';
   users: User[] = [];
+  allUsers:User[]=[];
   pageNumber:number=0;
   pageSize:number=3;
   allPages!:number;
@@ -31,7 +33,8 @@ export class AllUsersComponent {
   loadUsers(): void {
     this.userService.getAllUsers(this.pageNumber,this.pageSize).subscribe({
       next:  (response: any) => {
-        this.users = response.data.content;
+        this.allUsers = response.data.content;
+        this.users=[...this.allUsers];
         console.log("users",this.users);
         
         this.allPages=response.data.totalElements;        
@@ -63,6 +66,10 @@ export class AllUsersComponent {
         this.toastr.error(error);
       }
     })
+  }
+
+  updateFilteredItems(Filtered:any[]){
+    this.users=Filtered;
   }
 
 }
