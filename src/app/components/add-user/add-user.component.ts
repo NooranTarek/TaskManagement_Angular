@@ -40,7 +40,7 @@ export class AddUserComponent {
         if (response){
           this.signupForm.get('role')?.setValue('user');
           this.toastr.success("user registered successfully");
-          this.route.navigate(['/login']);
+          this.route.navigate(['/all-users']);
         }
       },
       error:(error: HttpErrorResponse) => {

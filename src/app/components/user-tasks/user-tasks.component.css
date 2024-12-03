@@ -35,10 +35,7 @@
 #btns{
     display:flex;
 }
-.btn{
-    margin-right: 5px;
-    margin-bottom: 20px;
-}
+
 #date{
   white-space: nowrap;}
 
