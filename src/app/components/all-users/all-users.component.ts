@@ -7,6 +7,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.component';
 import { AuthService } from '../../services/auth.service';
 import { FilterDataComponent } from '../filter-data/filter-data.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-users',
@@ -71,5 +72,20 @@ export class AllUsersComponent {
   updateFilteredItems(Filtered:any[]){
     this.users=Filtered;
   }
-
+  confirmAction(id:any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteSpesificUser(id);
+        Swal.fire('Deleted!', 'Your task has been deleted.', 'success');
+      }
+    });
+  }
 }
