@@ -29,21 +29,23 @@ export class AllUsersComponent {
   }
 
   loadUsers(): void {
-    this.userService.getAllUsers(this.pageNumber,this.pageSize).subscribe(
-      (response: any) => {
+    this.userService.getAllUsers(this.pageNumber,this.pageSize).subscribe({
+      next:  (response: any) => {
         this.users = response.data.content;
         console.log("users",this.users);
         
         this.allPages=response.data.totalElements;        
         this.toastr.success("users showed successfully");
 
-      },
-      (error) => {
+      },error:(error) => {
         if (error.error.message == "Token EXPIRED") {
           this.toastr.error(error.error.message);
           this.route.navigate(['/login']);
         }
+        this.toastr.error(error.error.message);
       }
+    }
+    
     );
   }
   pageChanged(event: PageEvent) {

@@ -48,8 +48,8 @@ export class UserTasksComponent {
     });
   }
   loadTasks(): void {
-    this.taskService.getAllUserTasks(this.pageNumber,this.pageSize).subscribe(
-      (response: any) => {
+    this.taskService.getAllUserTasks(this.pageNumber,this.pageSize).subscribe({
+      next: (response: any) => {
         console.log("tasks", response);
         this.allTasks = response.data.content;
         // this.allPages=response.data.totalPages;        
@@ -57,14 +57,16 @@ export class UserTasksComponent {
         this.tasks=[...this.allTasks];
         this.toastr.success("your tasks showed successfully");
 
-      },
+      },error:
       (error) => {
         if (error.error.message == "Token EXPIRED") {
           this.toastr.error(error.error.message);
           this.route.navigate(['/login']);
         }
-        // console.log(error);
+        this.toastr.error(error.error.message);
       }
+    }
+      
     );
   }
 
@@ -73,17 +75,14 @@ export class UserTasksComponent {
     this.taskService.deleteTask(id).subscribe(
       {
         next: (response: any) => {
-          console.log(id);
-
-          console.log(response);
-
+          // console.log(id);
+          // console.log(response);
           this.toastr.success(response.message)
           this.loadTasks();
         },
         error:
           (error) => {
-            console.log(error);
-
+            // console.log(error);
             this.toastr.error(error.error.message);
           }
       }
@@ -92,7 +91,7 @@ export class UserTasksComponent {
   }
   updateFilteredItems(filtered: any[]) {
     this.tasks = filtered;
-    console.log("filtered data",this.tasks);
+    // console.log("filtered data",this.tasks);
 
   }
   // onPageChange(newPage:number){

@@ -55,7 +55,8 @@ if (this.add_task_form.valid){
       if(error.error.message=="Token EXPIRED"){
         this.toastr.error(error.error.message);
         this.route.navigate(['/login']);
-      }      // console.clear();
+      }
+      this.toastr.error(error.error.message);      
     }
     
   })

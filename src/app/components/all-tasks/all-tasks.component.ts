@@ -26,23 +26,23 @@ export class AllTasksComponent {
   }
 
   loadTasks(): void {
-    this.taskService.getAllTasks(this.pageNumber,this.pageSize).subscribe(
-      (response: any) => {
+    this.taskService.getAllTasks(this.pageNumber,this.pageSize).subscribe({
+      next: (response: any) => {
         console.log("tasks", response);
         this.allTasks = response.data.content;
-        // this.allPages=response.data.totalPages;        
         this.allPages=response.data.totalElements;        
         this.tasks=[...this.allTasks];
         this.toastr.success("your tasks showed successfully");
 
-      },
-      (error) => {
+      },error:(error) => {
         if (error.error.message == "Token EXPIRED") {
           this.toastr.error(error.error.message);
           this.route.navigate(['/login']);
         }
-        // console.log(error);
+        this.toastr.error(error.error.message);
       }
+    }
+     
     );
   }
   pageChanged(event: PageEvent) {
