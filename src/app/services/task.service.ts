@@ -33,7 +33,5 @@ createTask(data:any): Observable<Task[]> {
   updateTask(id:any,data:any):Observable<any>{
     return this.http.put<any>(`${this.urlApi}/${id}`,data)
   }
-  // findTaskById(id:any):Observable<Task>{
-  //   return this.http.get<Task>(`${this.urlApi}/${id}`);
-  // }
+
 }

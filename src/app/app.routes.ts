@@ -9,6 +9,7 @@ import { AdminSideBarComponent } from './components/admin-side-bar/admin-side-ba
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
 import { AllUsersComponent } from './components/all-users/all-users.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,10 @@ export const routes: Routes = [
     {
         path:"all-users",
         component:AllUsersComponent
+    },
+    {
+        path:"forbidden",
+        component:ForbiddenComponent
     },
     {
         path:"**",
