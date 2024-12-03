@@ -37,7 +37,6 @@
 }
 .btn{
     margin-right: 5px;
-    margin-bottom: 20px;
 }
 #date{
   white-space: nowrap;}
@@ -57,4 +56,12 @@
 }
 app-filter-data{
   margin-left: 200px;
+}
+th, td {
+  border: 0.5px solid #948c8c; 
+  text-align: left; 
+}
+
+th {
+  background-color: rgb(254,198,223); 
 }

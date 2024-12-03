@@ -55,3 +55,13 @@
   border-right: 5px solid rgb(255,199,226);
   border-bottom: 5px solid rgb(255,199,226);
 }
+
+th, td {
+  border: 0.5px solid #948c8c; 
+  padding: 8px; 
+  text-align: left; 
+}
+
+th {
+  background-color: rgb(254,198,223); 
+}

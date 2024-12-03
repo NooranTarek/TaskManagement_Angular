@@ -58,3 +58,12 @@
 app-filter-data{
   margin-left: 200px;
 }
+th, td {
+  border: 0.5px solid #948c8c; 
+  padding: 8px; 
+  text-align: left; 
+}
+
+th {
+  background-color: rgb(254,198,223); 
+}
