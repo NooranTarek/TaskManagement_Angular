@@ -11,6 +11,7 @@ import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
 import { AllUsersComponent } from './components/all-users/all-users.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { routesGuard } from './guards/routes.guard';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 export const routes: Routes = [
     {
@@ -42,6 +43,12 @@ export const routes: Routes = [
     {
         path:"all-users",
         component:AllUsersComponent,
+        canActivate:[routesGuard]
+
+    },
+    {
+        path:"add-user",
+        component:AddUserComponent,
         canActivate:[routesGuard]
 
     },

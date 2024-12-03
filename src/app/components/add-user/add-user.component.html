@@ -1,0 +1,121 @@
+<div class="before"></div>
+
+
+<div class="d-flex">
+    <app-admin-side-bar></app-admin-side-bar>
+
+
+  <div class="container py-3">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-8 col-xl-6">
+        <img src="https://png.pngtree.com/png-vector/20220912/ourmid/pngtree-vector-push-pin-paper-png-image_6172879.png">
+        <div class="card rounded-3">
+          <div class="form-container">
+            <form id="registrationForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" formControlName="firstName" >
+                </div>
+                @if(signupForm.controls['firstName'].invalid&&signupForm.controls['firstName'].touched)
+                {
+                <div class="form-text text-danger">
+                  @if(signupForm.controls['firstName'].errors?.['required']){
+                  <small> firstName is required</small>
+                  }
+                  @if(signupForm.controls['firstName'].errors?.['pattern']){
+                  <small> firstName should be letters and without space </small>
+                  }
+                </div>
+                }
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" formControlName="lastName">
+                </div>
+                @if(signupForm.controls['lastName'].invalid&&signupForm.controls['lastName'].touched)
+                {
+                <div class="form-text text-danger">
+                  @if(signupForm.controls['lastName'].errors?.['required']){
+                  <small> lastName is required</small>
+                  }
+                  @if(signupForm.controls['lastName'].errors?.['pattern']){
+                  <small> lastName should be letters and without space </small>
+                  }
+                </div>
+                }
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" name="username" placeholder="Enter Username" formControlName="username">
+                </div>
+                @if(signupForm.controls['username'].invalid&&signupForm.controls['username'].touched)
+                {
+                <div class="form-text text-danger">
+                  @if(signupForm.controls['username'].errors?.['required']){
+                  <small> username is required</small>
+                  }
+                  @if(signupForm.controls['username'].errors?.['pattern']){
+                  <small> username should be letters and without space </small>
+                  }
+                </div>
+                }
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Enter Email" formControlName="email">
+                </div>
+                @if(signupForm.controls['email'].invalid&&signupForm.controls['email'].touched)
+                {
+                <div class="form-text text-danger">
+                  @if(signupForm.controls['email'].errors?.['required']){
+                  <small> email is required</small>
+                  }
+                  @if(signupForm.controls['email'].errors?.['pattern']){
+                  <small> email should be letters and without space </small>
+                  }
+                </div>
+                }
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" name="password" placeholder="Enter Password" formControlName="password">
+                </div>
+                @if(signupForm.controls['password'].invalid&&signupForm.controls['password'].touched)
+                {
+                <div class="form-text text-danger">
+                  @if(signupForm.controls['password'].errors?.['required']){
+                  <small> password is required</small>
+                  }
+                  @if(signupForm.controls['password'].errors?.['pattern']){
+                  <small> password should match pattern </small>
+                  }
+                </div>
+                }
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" formControlName="role" class="form-control">
+                      @for (role of roleOptions; track $index) {
+                        <option [value]="role">{{ role}}</option>
+                      }
+                    </select>
+                  </div>
+                  @if(signupForm.controls['role'].invalid&&signupForm.controls['role'].touched)
+                  {
+                  <div class="form-text text-danger">
+                    @if(signupForm.controls['role'].errors?.['required']){
+                    <small> role is required</small>
+                    }
+                    @if(signupForm.controls['role'].errors?.['pattern']){
+                    <small> role should be letters and without space </small>
+                    }
+                  </div>
+                  }                          
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Add New User</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+</div>
