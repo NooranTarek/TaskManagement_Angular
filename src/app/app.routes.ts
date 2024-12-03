@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
 import { AllUsersComponent } from './components/all-users/all-users.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { routesGuard } from './guards/routes.guard';
 
 export const routes: Routes = [
     {
@@ -35,11 +36,14 @@ export const routes: Routes = [
     },
     {
         path:"all-tasks",
-        component:AllTasksComponent
+        component:AllTasksComponent,
+        canActivate:[routesGuard]
     },
     {
         path:"all-users",
-        component:AllUsersComponent
+        component:AllUsersComponent,
+        canActivate:[routesGuard]
+
     },
     {
         path:"forbidden",
