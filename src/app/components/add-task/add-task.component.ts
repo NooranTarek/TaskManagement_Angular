@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { Periority, Status, Task } from '../../interfaces/task';
@@ -16,7 +16,7 @@ import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.componen
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css'
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit {
   isAdmin!:boolean;
   role:string='';
   task:Task []=[];
@@ -37,7 +37,9 @@ export class AddTaskComponent {
    dueDate: new FormControl(null)
   })
 }
-
+ngOnInit(): void {
+  this.getRole();
+}
 onSubmit(){
 if (this.add_task_form.valid){
   const formData=this.add_task_form.value;
