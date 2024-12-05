@@ -12,6 +12,7 @@ import { AllUsersComponent } from './components/all-users/all-users.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { routesGuard } from './guards/routes.guard';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { KanbanBoardComponent } from './components/kanban-board/kanban-board.component';
 
 export const routes: Routes = [
     {
@@ -51,6 +52,10 @@ export const routes: Routes = [
         component:AddUserComponent,
         canActivate:[routesGuard]
 
+    },
+    {
+        path:"kanban-board",
+        component:KanbanBoardComponent
     },
     {
         path:"forbidden",

@@ -42,7 +42,6 @@ if (this.signupForm.valid){
     },
     error:(error: HttpErrorResponse) => {
       this.toastr.error(error.error.message);
-      console.clear();
     }
     
   })

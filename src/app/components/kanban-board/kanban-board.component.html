@@ -1,0 +1,29 @@
+<div class="before"></div>
+<div class="tasksContainer d-flex" cdkDropListGroup>
+  @if(isAdmin){
+    <app-admin-side-bar></app-admin-side-bar>
+      }
+      @else  {
+        <app-side-bar></app-side-bar>
+    
+      }
+  <div class="board">
+    @for (column of taskColumns; track $index) {
+
+    <div class="column">
+      <div cdkDropList [cdkDropListData]="getColumnTasks(column)" class="task-list"
+        (cdkDropListDropped)="drop($event,column)">
+        <h2>{{ column | titlecase }}</h2>
+        @for (task of getColumnTasks(column); track $index) {
+        <div class="task-card" (mousedown)="onMouseDown(task)" (mouseup)="onMouseUp()" cdkDrag>
+
+          <div class="card">
+            <p>{{task.title}}</p>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    }
+
+  </div>

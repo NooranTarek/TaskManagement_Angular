@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  constructor(private http :HttpClient) { }
+  constructor(private http :HttpClient) {
+    this.initializeUserFromToken()
+   }
   private apiUrl='http://localhost:8080/auth'
   private role!: string;
   private name!: string;
@@ -18,6 +21,19 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`,data);
   }
 
+
+  public initializeUserFromToken(): void {
+    const token = localStorage.getItem('Authorization');
+    if (token) {
+      try {
+        const decodedToken: any = jwtDecode(token);
+        this.role = decodedToken.role;
+        this.name = decodedToken.sub;
+      } catch (error) {
+        console.log('Error decoding token:', error);
+      }
+    }
+  }
   setRole(role: string) {
     this.role = role;
   }

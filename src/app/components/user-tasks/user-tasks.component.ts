@@ -60,10 +60,8 @@ export class UserTasksComponent {
 
       },error:
       (error) => {
-        if (error.error.message == "Token EXPIRED") {
-          this.toastr.error(error.error.message);
-          this.route.navigate(['/login']);
-        }
+        console.log(error);
+        
         this.toastr.error(error.error.message);
       }
     }

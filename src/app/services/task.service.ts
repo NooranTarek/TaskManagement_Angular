@@ -33,5 +33,10 @@ createTask(data:any): Observable<Task[]> {
   updateTask(id:any,data:any):Observable<any>{
     return this.http.put<any>(`${this.urlApi}/${id}`,data)
   }
+updateTaskStatus(id: any, status: string): Observable<any> {
+  return this.http.put<any>(`${this.urlApi}/updateStatus/${id}`, null, {
+    params: { status },
+  });
+}
 
 }

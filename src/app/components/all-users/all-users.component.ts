@@ -42,10 +42,6 @@ export class AllUsersComponent {
         this.toastr.success("users showed successfully");
 
       },error:(error) => {
-        if (error.error.message == "Token EXPIRED") {
-          this.toastr.error(error.error.message);
-          this.route.navigate(['/login']);
-        }
         this.toastr.error(error.error.message);
       }
     }

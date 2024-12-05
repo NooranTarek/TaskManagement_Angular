@@ -51,10 +51,6 @@ export class UpdateTaskComponent implements OnInit {
 
         },
         error:(error) => {
-        if (error.error.message == "Token EXPIRED") {
-          this.toastr.error(error.error.message);
-          this.router.navigate(['/login']);
-        }
         this.toastr.error(error.error.message);
       }
       }

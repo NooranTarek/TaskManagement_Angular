@@ -7,7 +7,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatCardModule } from '@angular/material/card';
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideHttpClient(withInterceptors([authInterceptor])),provideToastr(),provideAnimations(), provideAnimationsAsync(), { provide: MAT_DIALOG_DATA, useValue: {} },
+  providers: [provideHttpClient(withInterceptors([authInterceptor])),provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideToastr(),provideAnimations(), provideAnimationsAsync(), { provide: MAT_DIALOG_DATA, useValue: {} },
   { provide: MatDialogRef, useValue: {} },]
 };

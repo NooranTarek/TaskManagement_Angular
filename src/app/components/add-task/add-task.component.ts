@@ -52,10 +52,6 @@ if (this.add_task_form.valid){
       }
     },
     error:(error: HttpErrorResponse) => {
-      if(error.error.message=="Token EXPIRED"){
-        this.toastr.error(error.error.message);
-        this.route.navigate(['/login']);
-      }
       this.toastr.error(error.error.message);      
     }
     
@@ -70,6 +66,8 @@ getRole(){
     this.isAdmin=true;
   }
   else{
+    const token =localStorage.getItem('Authorization');
+  console.log("from add task",token);
     this.isAdmin=false;
   }
 }

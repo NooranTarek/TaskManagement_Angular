@@ -36,10 +36,6 @@ export class AllTasksComponent {
         this.toastr.success("your tasks showed successfully");
 
       },error:(error) => {
-        if (error.error.message == "Token EXPIRED") {
-          this.toastr.error(error.error.message);
-          this.route.navigate(['/login']);
-        }
         this.toastr.error(error.error.message);
       }
     }
