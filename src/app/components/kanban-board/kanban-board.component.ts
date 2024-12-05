@@ -24,27 +24,16 @@ export class KanbanBoardComponent implements OnInit{
   movedTask!:Task;
   private pressTimer: any; 
   private longPressThreshold = 500;
-  constructor(private taskService:TaskService,private authService:AuthService){
+  taskColumns = ['To_Do', 'In_Progress', 'Completed'];
 
-  }
+  constructor(private taskService:TaskService,private authService:AuthService){}
+
   ngOnInit(): void {
     this.loadTasks();
     this.getRole();
   }
-  taskColumns = ['To_Do', 'In_Progress', 'Completed'];
 
-  getColumnTasks(column: string): Task[] {
-    switch (column) {
-      case 'To_Do':
-        return this.To_Do;
-      case 'In_Progress':
-        return this.In_Progress;
-      case 'Completed':
-        return this.Completed;
-      default:
-        return [];
-    }
-  }
+  //to load tasks each on its array type
   loadTasks():void{
     this.taskService.getAllUserTasks(this.pageNumber,this.pageSize).subscribe({
       next:(response:any)=>{
@@ -74,6 +63,20 @@ export class KanbanBoardComponent implements OnInit{
       }
     })
   }
+    // to get each status tasks array
+    getColumnTasks(column: string): Task[] {
+      switch (column) {
+        case 'To_Do':
+          return this.To_Do;
+        case 'In_Progress':
+          return this.In_Progress;
+        case 'Completed':
+          return this.Completed;
+        default:
+          return [];
+      }
+    }
+    //to drag and drop task within the same container of different
   drop(event: CdkDragDrop<Task[]>, column: string): void {
     if (event.previousContainer===event.container){
       moveItemInArray(event.container.data,event.previousIndex,event.currentIndex)
@@ -101,7 +104,7 @@ export class KanbanBoardComponent implements OnInit{
     }
   }
   
-
+  //to get ckicked task
   onMouseDown(task: Task): void {
     this.pressTimer = setTimeout(() => {
     this.movedTask=task
@@ -111,6 +114,7 @@ export class KanbanBoardComponent implements OnInit{
   onMouseUp(): void {
     clearTimeout(this.pressTimer);
   }
+  //to show side bar
   getRole(){
     this.role=this.authService.getRole();
     console.log("role",this.role);
