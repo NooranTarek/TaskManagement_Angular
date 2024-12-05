@@ -15,20 +15,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const toastr= inject(ToastrService)
   if (token) {
-    try {
-      const decodedToken: any = jwtDecode(token);
-      // console.log('Decoded Token:', decodedToken);
-
-      const userRole = decodedToken.role;
-      const username =decodedToken.sub;
-      authService.setRole(userRole);
-      console.log("from interceptor",userRole);
-      
-      authService.setName(username);
-      // console.log('User Role:', userRole);
-    } catch (error) {
-      console.error('Error decoding token:', error);
-    }
+    authService.initializeUserFromToken();
     req = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${token}`)
     });
